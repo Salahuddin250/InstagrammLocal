@@ -1,0 +1,40 @@
+@use "./themes/dark.scss";
+@use "./themes/normal.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "TTNorms";
+}
+
+svg {
+    display: flex;
+}
+
+button, input {
+    border: none;
+    outline: none;
+}
+input::placeholder {
+    font-family: "TTNorms";
+}
+a {
+    text-decoration: none;
+}
+ul, ol {
+    list-style-type: none;
+}
+.container {
+    max-width: 975px;
+    width: 100%;
+    margin: 0 auto;
+}
+body {
+    background: var(--main-color);
+    color: var(--inverted-main-color);
+    transition: all 0.2s;
+}
+// .app {
+//     background: var(--main-color);
+// }
