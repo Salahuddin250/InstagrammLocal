@@ -3,22 +3,25 @@
   align-items: center;
   gap: 7px;
   padding: 6px 9px;
-
-
   border-radius: 10px;
+
   &.disabled {
   }
+
   &.default {
     background: var(--red-300);
     color: #fff;
   }
+
   &.outline {
     background: transparent;
     border: 1px solid var(--red-300);
     color: var(--red-300);
   }
+
   &.disabled {
   }
+
   &.max {
     width: 100%;
   }

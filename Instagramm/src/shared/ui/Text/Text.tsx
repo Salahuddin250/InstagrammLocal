@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { type FC, type ReactNode } from "react";
 import cls from "./Text.module.scss";
 import { classNames } from "@/shared/lib/classNames";
 
@@ -15,7 +15,7 @@ const textClasses: Record<TextSize, string> = {
   14: cls.size14,
   16: cls.size16,
   18: cls.size18,
-  24: cls.size24,
+  24: cls.size24
 };
 const fWClasses: Record<TextFw, string> = {
   300: cls.fw300,
@@ -23,30 +23,30 @@ const fWClasses: Record<TextFw, string> = {
   500: cls.fw500,
   600: cls.fw600,
   700: cls.fw700,
-  800: cls.fw800,
+  800: cls.fw800
 };
 const alignClasses: Record<TextAlign, string> = {
-    center: cls.center,
-    left: cls.left,
-    right: cls.right
-  };
-  const colorClasses: Record<TextColor, string> = {
-    default: cls.default,
-    gray: cls.gray,
-  };
+  center: cls.center,
+  left: cls.left,
+  right: cls.right
+};
+const colorClasses: Record<TextColor, string> = {
+  default: cls.default,
+  gray: cls.gray
+};
 
 interface TextProps {
-  children?: ReactNode;
-  as?: AsType;
-  size?: TextSize;
-  fw?: TextFw;
-  className?: string;
-  align?: TextAlign;
-  color?: TextColor;
+  children?: ReactNode
+  as?: AsType
+  size?: TextSize
+  fw?: TextFw
+  className?: string
+  align?: TextAlign
+  color?: TextColor
 }
 
 export const Text: FC<TextProps> = (props) => {
-  const { children, as = "h2", size = 14, fw = 300, className="", align, color='default' } = props;
+  const { children, as = "h2", size = 14, fw = 300, className = "", align, color = 'default' } = props;
 
   const classes = [size && textClasses[size], fw && fWClasses[fw], align && alignClasses[align], color && colorClasses[color], className];
 
@@ -59,7 +59,7 @@ export const Text: FC<TextProps> = (props) => {
     h6: <h6 className={classNames("", {}, classes)}>{children}</h6>,
 
     span: <span className={classNames("", {}, classes)}>{children}</span>,
-    p: <p className={classNames("", {}, classes)}>{children}</p>,
+    p: <p className={classNames("", {}, classes)}>{children}</p>
   };
 
   return getAs[as];

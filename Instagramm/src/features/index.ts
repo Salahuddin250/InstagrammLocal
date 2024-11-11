@@ -1,1 +1,1 @@
-export {SwitchButton} from "./SwitchButton/ui/SwitchButton"
+export { SwitchButton } from "./SwitchButton/ui/SwitchButton"

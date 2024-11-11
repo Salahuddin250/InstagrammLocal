@@ -6,21 +6,19 @@ import { ThemeContext } from "@/app/provider";
 import { Theme } from "@/shared/consts/theme";
 
 export const Navbar = () => {
-
-  const {theme} = useContext(ThemeContext)
-    
+  const { theme } = useContext(ThemeContext)
 
   return (
-    <div className={cls.navbar}>
-      <div className="container">
-        <div className={cls.wrap}>
+     <div className={cls.navbar}>
+        <div className="container">
+           <div className={cls.wrap}>
 
-          <img className={theme === Theme.DARK && cls.dark} src={Logo} alt="Instagramm" />
+              <img className={theme === Theme.DARK && cls.dark} src={Logo} alt="Instagramm" />
 
-          <NavSearch />
-          <NavMenu />
+              <NavSearch />
+              <NavMenu />
+           </div>
         </div>
-      </div>
-    </div>
+     </div>
   );
 };

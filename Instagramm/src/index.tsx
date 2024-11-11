@@ -6,9 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import "./shared/config/i18n";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </BrowserRouter>
+   <BrowserRouter>
+      <ThemeProvider>
+         <App />
+      </ThemeProvider>
+   </BrowserRouter>
 );

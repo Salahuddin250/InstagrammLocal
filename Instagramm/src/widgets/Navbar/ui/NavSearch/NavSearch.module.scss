@@ -9,18 +9,20 @@
   align-items: center;
   background: var(--main-color-body);
 }
+
 .text {
   position: absolute;
   left: 15px;
   pointer-events: none;
 }
+
 .input {
   height: 100%;
   width: 100%;
   font-weight: 400;
   font-size: 16px;
   color: var(--inverted-main-color);
-  padding: 0px 5px;
+  padding: 0 5px;
   border-radius: 10px;
   outline: 1px solid var(--border);
   background: transparent;

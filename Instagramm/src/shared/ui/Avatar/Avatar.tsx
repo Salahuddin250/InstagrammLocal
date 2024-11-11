@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import cls from "./Avatar.module.scss";
 import { classNames } from "@/shared/lib/classNames";
 
@@ -12,18 +12,18 @@ const sizeClasses: Record<AvatarSize, string> = {
   45: cls.size45,
   50: cls.size50,
   142: cls.size142,
-  180: cls.size180,
+  180: cls.size180
 };
 const variantClasses: Record<AvatarVariant, string> = {
   default: cls.default,
-  stories: cls.stories,
+  stories: cls.stories
 };
 
 interface AvatarProps {
-  size?: AvatarSize;
-  variant?: AvatarVariant;
-  className?: string;
-  src?: string;
+  size?: AvatarSize
+  variant?: AvatarVariant
+  className?: string
+  src?: string
 }
 
 export const Avatar: FC<AvatarProps> = (props) => {
@@ -31,11 +31,11 @@ export const Avatar: FC<AvatarProps> = (props) => {
   const classes = [
     size && sizeClasses[size],
     variant && variantClasses[variant],
-    className,
+    className
   ];
   return (
-    <div className={classNames(cls.avatar, {}, classes)}>
-      {src ? <img src={src} alt="" /> : "In"}
-    </div>
+     <div className={classNames(cls.avatar, {}, classes)}>
+        {src ? <img src={src} alt="" /> : "In"}
+     </div>
   );
 };

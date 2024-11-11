@@ -1,16 +1,16 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from "react";
+import { type ButtonHTMLAttributes, type FC, type ReactNode } from "react";
 import cls from "./Button.module.scss";
-import { Mods, classNames } from "@/shared/lib/classNames";
+import { type Mods, classNames } from "@/shared/lib/classNames";
 
 type ButtonVariant = "default" | "outline";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  loading?: boolean;
-  addonLeft?: JSX.Element;
-  addonRight?: JSX.Element;
-  variant?: ButtonVariant;
-  children: ReactNode;
-  max?: boolean,
+  loading?: boolean
+  addonLeft?: JSX.Element
+  addonRight?: JSX.Element
+  variant?: ButtonVariant
+  children: ReactNode
+  max?: boolean
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -26,20 +26,20 @@ export const Button: FC<ButtonProps> = (props) => {
   } = props;
   const variantClasses: Record<ButtonVariant, string> = {
     default: cls.default,
-    outline: cls.outline,
+    outline: cls.outline
   };
 
   const classes = [variant && variantClasses[variant], className];
 
   const mods: Mods = {
     [cls.disabled]: disabled,
-    [cls.max]: max,
+    [cls.max]: max
   };
   return (
-    <button className={classNames(cls.btn, mods, classes)}>
-      {addonLeft}
-      {loading ? <div>Spinner...</div> : children}
-      {addonRight}
-    </button>
+     <button className={classNames(cls.btn, mods, classes)}>
+        {addonLeft}
+        {loading ? <div>Spinner...</div> : children}
+        {addonRight}
+     </button>
   );
 };

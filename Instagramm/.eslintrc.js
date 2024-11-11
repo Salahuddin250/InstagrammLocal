@@ -1,3 +1,4 @@
+
 module.exports = {
   env: {
     browser: true,
@@ -21,10 +22,16 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
+    "react/jsx-indent": [2, 3],
     "@typescript-eslint/quotes": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "promise/param-names": "off"
   },
 };

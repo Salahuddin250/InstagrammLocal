@@ -1,36 +1,34 @@
 import { LOCAL_STORAGE_THEME } from "@/shared/consts/localstorage";
 import { Theme } from "@/shared/consts/theme";
-import { FC, ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import { type FC, type ReactNode, createContext, useEffect, useMemo, useState } from "react";
 
 interface IThemeContext {
-    children: ReactNode,
+  children: ReactNode
 }
 
 interface IThemeValues {
-    theme?: Theme;
-    setTheme?: (theme?: Theme) => void;
+  theme?: Theme
+  setTheme?: (theme?: Theme) => void
 }
 
 export const ThemeContext = createContext<IThemeValues>({})
-export const ThemeProvider:FC<IThemeContext> = ({children}) => {
+export const ThemeProvider: FC<IThemeContext> = ({ children }) => {
+  const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME) as Theme;
 
-    const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME) as Theme;
+  const initialState = fallbackTheme || Theme.LIGHT
 
-    const initialState = fallbackTheme || Theme.LIGHT
+  const [theme, setTheme] = useState<Theme>(initialState)
 
-    const [theme, setTheme] = useState<Theme>(initialState)
+  useEffect(() => {
+    document.body.className = theme
+    localStorage.setItem(LOCAL_STORAGE_THEME, theme)
+  }, [theme])
 
-    useEffect(() => {
-        document.body.className = theme
-        localStorage.setItem(LOCAL_STORAGE_THEME, theme)
-    }, [theme])
+  const defaultTheme = useMemo(() => ({ theme, setTheme }), [theme])
 
-    const defaultTheme = useMemo(() => ({theme, setTheme}), [theme])
-
-
-    return (
-        <ThemeContext.Provider value={defaultTheme}>
-            {children}
-        </ThemeContext.Provider>
-    )
+  return (
+     <ThemeContext.Provider value={defaultTheme}>
+        {children}
+     </ThemeContext.Provider>
+  )
 }

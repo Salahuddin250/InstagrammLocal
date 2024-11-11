@@ -1,6 +1,6 @@
 import { Text } from "@/shared/ui";
 import cls from "./NavSearch.module.scss";
-import { ChangeEvent, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 
 export const NavSearch = () => {
   const [search, setSearch] = useState<string>("");
@@ -10,15 +10,15 @@ export const NavSearch = () => {
   };
 
   return (
-    <div className={cls.search}>
-      <input className={cls.input} type="text" onChange={onChangeSearch} value={search}/>
-      {!search && (
+     <div className={cls.search}>
+        <input className={cls.input} type="text" onChange={onChangeSearch} value={search}/>
+        {!search && (
         <div className={cls.text}>
-          <Text color="gray" as="span" fw={400} size={16}>
-            Search
-          </Text>
+           <Text color="gray" as="span" fw={400} size={16}>
+              Search
+           </Text>
         </div>
-      )}
-    </div>
+        )}
+     </div>
   );
 };
