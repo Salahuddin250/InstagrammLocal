@@ -3,6 +3,7 @@ import cls from "./Button.module.scss";
 import { type Mods, classNames } from "@/shared/lib/classNames";
 
 type ButtonVariant = "default" | "outline";
+type PaddingType = 5 | 10 | 15 | 20;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean
@@ -11,6 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   children: ReactNode
   max?: boolean
+  padding?: PaddingType
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -22,14 +24,21 @@ export const Button: FC<ButtonProps> = (props) => {
     children,
     addonLeft,
     addonRight,
-    max = false
+    max = false,
+    padding
   } = props;
   const variantClasses: Record<ButtonVariant, string> = {
     default: cls.default,
     outline: cls.outline
   };
+  const paddingClasses: Record<PaddingType, string> = {
+    5: cls.pad5,
+    10: cls.pad10,
+    15: cls.pad15,
+    20: cls.pad20
+  };
 
-  const classes = [variant && variantClasses[variant], className];
+  const classes = [variant && variantClasses[variant], padding && paddingClasses[padding], className];
 
   const mods: Mods = {
     [cls.disabled]: disabled,

@@ -12,3 +12,13 @@
 .dark {
     filter: invert(100%);
 }
+.btn {
+    cursor: pointer;
+    padding: 9px 40px;
+}
+.link1 {
+    color: var(--main-color);
+}
+.link2 {
+    color: var(--red-300);
+}

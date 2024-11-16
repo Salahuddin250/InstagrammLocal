@@ -1,0 +1,65 @@
+.field {
+  width: 100%;
+  position: relative;
+  &.active {
+    .label {
+      .placeholder {
+        top: 0;
+        padding: 2px;
+        font-size: 16px;
+        background: var(--main-color-body);
+      }
+    }
+  }
+  
+  .error {
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid var(--red-300);
+    color: var(--error);
+    padding: 1px 5px;
+    border-radius: 3px;
+    transition: all 0.3s;
+  }
+
+  .label {
+    position: relative;
+    input {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: var(--inverted-main-color);
+    }
+    .placeholder {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: var(--text-color);
+      transition: all 0.2s;
+      pointer-events: none;
+    }
+  }
+  &.errorField {
+    .label {
+      input {
+        border: 1px solid var(--error);
+
+      }
+      .placeholder {
+        color: var(--error);
+      }
+    }
+    .error {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

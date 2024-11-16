@@ -25,6 +25,7 @@ module.exports = {
     "react/jsx-indent": [2, 3],
     "@typescript-eslint/quotes": "off",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
@@ -32,6 +33,8 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "promise/param-names": "off"
+    "promise/param-names": "off",
+    "react/jsx-indent": "off",
+    "react/display-name": "off"
   },
 };
