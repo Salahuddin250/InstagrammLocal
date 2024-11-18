@@ -1,3 +1,4 @@
+import { type RegisterFormValues, useRegisterForm } from "../../model/schema/useRegisterForm";
 import cls from "./RegisterForm.module.scss";
 import {
   AppLink,
@@ -10,6 +11,13 @@ import {
 } from "@/shared/ui";
 
 export const RegisterForm = () => {
+  const { register, watch, errors, isValid, RegisterFormNames, handleSubmit } =
+    useRegisterForm();
+
+  const onSubmit = (data: RegisterFormValues) => {
+    console.log(data);
+  }
+
   return (
     <HStack className={cls.cont} justify="center">
       <VStack gap={22} className={cls.auth}>
@@ -17,35 +25,45 @@ export const RegisterForm = () => {
           <Text className={cls.title} fw={600} size={24} color="red">
             Регистрация
           </Text>
-          <Form className={cls.form}>
+          <Form onSubmit={handleSubmit(onSubmit)} className={cls.form}>
             <VStack align="center" gap={18}>
               <Input
-                type="email"
-                value=""
+                {...register(RegisterFormNames.EMAIL)}
+                type="text"
+                value={watch(RegisterFormNames.EMAIL)}
+                error={errors?.email?.message}
                 className={cls.input}
                 placeholder="Ваша почта*"
               />
-                            <Input
+              <Input
+                {...register(RegisterFormNames.FULLNAME)}
                 type="text"
-                value=""
+                value={watch(RegisterFormNames.FULLNAME)}
+                error={errors?.fullname?.message}
                 className={cls.input}
                 placeholder="Имя и фамилия*"
               />
-                            <Input
+              <Input
+                {...register(RegisterFormNames.USERNAME)}
                 type="text"
-                value=""
+                value={watch(RegisterFormNames.USERNAME)}
+                error={errors?.username?.message}
                 className={cls.input}
                 placeholder="Имя пользователя*"
               />
               <Input
+                {...register(RegisterFormNames.PASSWORD)}
                 type="password"
-                value=""
+                value={watch(RegisterFormNames.PASSWORD)}
+                error={errors?.password?.message}
                 className={cls.input}
                 placeholder="Пароль*"
               />
               <Input
+                {...register(RegisterFormNames.CF_PASSWOD)}
                 type="password"
-                value=""
+                value={watch(RegisterFormNames.CF_PASSWOD)}
+                error={errors?.cf_password?.message}
                 className={cls.input}
                 placeholder="Confirm password*"
               />
@@ -62,7 +80,7 @@ export const RegisterForm = () => {
                   </Text>
                 </HStack>
               </HStack>
-              <Button className={cls.btn} max={true}>
+              <Button type="submit" disabled={!isValid} className={cls.btn} max={true}>
                 Регистрация
               </Button>
 

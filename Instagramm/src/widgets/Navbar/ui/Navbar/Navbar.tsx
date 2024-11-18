@@ -1,5 +1,5 @@
 import Logo from "@/shared/assets/Logo.png";
-import { NavMenu, NavSearch } from "../../ui";
+import { NavMenu, NavSearch } from "..";
 import cls from "./Navbar.module.scss";
 import { useContext } from "react";
 import { ThemeContext } from "@/app/provider";

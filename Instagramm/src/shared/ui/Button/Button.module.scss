@@ -3,8 +3,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  cursor: pointer;
 
   &.disabled {
+    pointer-events: none;
+    opacity: .6;
   }
 
   &.default {
@@ -18,10 +21,6 @@
     border: 1px solid var(--red-300);
     color: var(--red-300);
   }
-
-  &.disabled {
-  }
-
   &.max {
     width: 100%;
   }

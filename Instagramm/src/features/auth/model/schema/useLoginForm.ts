@@ -19,7 +19,7 @@ export const useLoginForm = () => {
     password: yup.string().required(message).min(6, "Минимум 6 символов").max(15, "Максимум 15 символов")
   })
 
-  const { register, watch, formState: { errors, isValid } } = useForm<LoginFormValues>({
+  const { register, watch, handleSubmit, formState: { errors, isValid } } = useForm<LoginFormValues>({
     mode: "onChange",
     resolver: yupResolver(schema),
     defaultValues: {
@@ -33,6 +33,7 @@ export const useLoginForm = () => {
     watch,
     LoginFormNames,
     errors,
-    isValid
+    isValid,
+    handleSubmit
   }
 }

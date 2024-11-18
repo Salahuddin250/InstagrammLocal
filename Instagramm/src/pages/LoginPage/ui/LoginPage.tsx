@@ -1,4 +1,4 @@
-import { LoginForm } from '@/features'
+import { LoginForm } from '@/features/auth'
 import cls from "./LoginPage.module.scss"
 
 const LoginPage = () => {

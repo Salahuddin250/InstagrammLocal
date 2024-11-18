@@ -25,7 +25,8 @@ export const Button: FC<ButtonProps> = (props) => {
     addonLeft,
     addonRight,
     max = false,
-    padding
+    padding,
+    ...rest
   } = props;
   const variantClasses: Record<ButtonVariant, string> = {
     default: cls.default,
@@ -45,7 +46,7 @@ export const Button: FC<ButtonProps> = (props) => {
     [cls.max]: max
   };
   return (
-     <button className={classNames(cls.btn, mods, classes)}>
+     <button className={classNames(cls.btn, mods, classes)} {...rest}>
         {addonLeft}
         {loading ? <div>Spinner...</div> : children}
         {addonRight}

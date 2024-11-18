@@ -1,4 +1,4 @@
-import { useLoginForm } from "../../model/schema/useLoginForm";
+import { type LoginFormValues, useLoginForm } from "../../model/schema/useLoginForm";
 import cls from "./LoginForm.module.scss";
 import {
   AppLink,
@@ -11,7 +11,11 @@ import {
 } from "@/shared/ui";
 
 export const LoginForm = () => {
-  const { register, watch, isValid, errors, LoginFormNames } = useLoginForm();
+  const { register, watch, handleSubmit, isValid, errors, LoginFormNames } = useLoginForm();
+
+  const onSubmit = (data: LoginFormValues) => {
+    console.log(data);
+  }
 
   return (
     <HStack className={cls.cont} justify="center">
@@ -20,7 +24,7 @@ export const LoginForm = () => {
           <Text className={cls.title} fw={600} size={24} color="red">
             Вход
           </Text>
-          <Form className={cls.form}>
+          <Form onSubmit={handleSubmit(onSubmit)} className={cls.form}>
             <VStack align="center" gap={22}>
               <Input
                 {...register(LoginFormNames.EMAIL)}
@@ -57,7 +61,7 @@ export const LoginForm = () => {
                   </Text>
                 </AppLink>
               </HStack>
-              <Button className={cls.btn} max={true}>
+              <Button type="submit" disabled={!isValid} className={cls.btn} max={true}>
                 Войти
               </Button>
 

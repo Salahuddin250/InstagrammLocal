@@ -35,6 +35,7 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "promise/param-names": "off",
     "react/jsx-indent": "off",
+    "@typescript-eslint/no-misused-promises": "off",
     "react/display-name": "off"
   },
 };
