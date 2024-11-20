@@ -1,25 +1,29 @@
-import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../widgets";
-import HomePage from "@/pages/HomePage/ui/HomePage";
-import { LoginLazyPage } from "@/pages/LoginPage/ui/LoginLazyPage";
-import { RegisterLazyPage } from "@/pages/RegisterPage/ui/RegisterLazyPage";
-import { Suspense } from "react";
-import { Button, HStack, Spinner } from "@/shared/ui";
+import { Suspense, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getAuthToken, getFetchAuthUser } from "@/entities/User";
+import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
+import { LOCAL_STORAGE_TOKEN } from "@/shared/consts/localstorage";
+import { RouteProvider } from "./provider";
 
 export const App = () => {
+  const isLogged = useSelector(getAuthToken)
+  const token = localStorage.getItem(LOCAL_STORAGE_TOKEN)
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getFetchAuthUser())
+    }
+  }, [dispatch])
+
   return (
     <div className="app">
       <Suspense fallback="">
-        <Navbar />
+        <Navbar auth={Boolean(isLogged)} />
         <div className="container">
-
-      <Suspense fallback={<Spinner className="spinner"/>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginLazyPage />} />
-              <Route path="/register" element={<RegisterLazyPage />} />
-            </Routes>
-          </Suspense>
+          <RouteProvider/>
         </div>
       </Suspense>
     </div>

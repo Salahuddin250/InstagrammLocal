@@ -1,17 +1,20 @@
 import Logo from "@/shared/assets/Logo.png";
 import { NavMenu, NavSearch } from "..";
 import cls from "./Navbar.module.scss";
-import { useContext } from "react";
+import { type FC, useContext } from "react";
 import { ThemeContext } from "@/app/provider";
 import { Theme } from "@/shared/consts/theme";
 import { AppLink, Button, HStack } from "@/shared/ui";
 import { classNames } from "@/shared/lib/classNames";
-import { useSelector } from "react-redux";
-import { getAuthData } from "@/entities/User";
 
-export const Navbar = () => {
+export interface NavbarProps {
+  auth: boolean
+}
+
+export const Navbar: FC<NavbarProps> = (props) => {
+  const { auth } = props
+
   const { theme } = useContext(ThemeContext);
-  const isLogged = !!useSelector(getAuthData)
 
   return (
     <div className={cls.navbar}>
@@ -24,7 +27,7 @@ export const Navbar = () => {
           />
 
           <NavSearch />
-          {isLogged
+          {auth
             ? (
             <NavMenu />
               )

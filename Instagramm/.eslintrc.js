@@ -37,6 +37,7 @@ module.exports = {
     "react/jsx-indent": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
     "react/display-name": "off"
   },
 };

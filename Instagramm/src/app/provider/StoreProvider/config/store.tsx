@@ -1,7 +1,8 @@
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
-import { type StateSchema } from './StateSchema'
+import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 import { authReduser } from '@/features/auth'
 import { userReducer } from '@/entities/User'
+import { $api } from '@/shared/api'
 
 export const createStore = () => {
   const rootRedusers: ReducersMapObject<StateSchema> = {
@@ -9,8 +10,19 @@ export const createStore = () => {
     user: userReducer
   }
 
+  const extraArg: ThunkExtraArg = {
+    api: $api
+  }
+
   const store = configureStore({
-    reducer: rootRedusers
+    reducer: rootRedusers,
+    devTools: !!DEV,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg
+        }
+      })
   })
   return store
 }
