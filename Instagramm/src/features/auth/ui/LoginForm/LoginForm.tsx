@@ -1,4 +1,7 @@
+import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
 import { type LoginFormValues, useLoginForm } from "../../model/schema/useLoginForm";
+import { getAuthError, getAuthLoading, loginByEmail } from "@/features/auth";
+
 import cls from "./LoginForm.module.scss";
 import {
   AppLink,
@@ -9,12 +12,23 @@ import {
   VStack,
   Form
 } from "@/shared/ui";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const { register, watch, handleSubmit, isValid, errors, LoginFormNames } = useLoginForm();
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log(data);
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  const authError = useSelector(getAuthError)
+  const authLoading = useSelector(getAuthLoading)
+
+  const onSubmit = async (data: LoginFormValues) => {
+    const res = await dispatch(loginByEmail(data))
+    if (res.meta.requestStatus === "fulfilled") {
+      navigate("/")
+    }
   }
 
   return (
@@ -26,6 +40,7 @@ export const LoginForm = () => {
           </Text>
           <Form onSubmit={handleSubmit(onSubmit)} className={cls.form}>
             <VStack align="center" gap={22}>
+              {authError && <Text fw={500} size={14} color="error">{authError}</Text>}
               <Input
                 {...register(LoginFormNames.EMAIL)}
                 value={watch(LoginFormNames.EMAIL)}
@@ -61,7 +76,7 @@ export const LoginForm = () => {
                   </Text>
                 </AppLink>
               </HStack>
-              <Button type="submit" disabled={!isValid} className={cls.btn} max={true}>
+              <Button type="submit" disabled={!isValid && authLoading} className={cls.btn} max={true} loading={authLoading}>
                 Войти
               </Button>
 

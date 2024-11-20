@@ -1,4 +1,5 @@
 import { type RegisterFormValues, useRegisterForm } from "../../model/schema/useRegisterForm";
+import { getAuthError, getAuthLoading, registerByEmail } from "../../";
 import cls from "./RegisterForm.module.scss";
 import {
   AppLink,
@@ -9,13 +10,27 @@ import {
   VStack,
   Form
 } from "@/shared/ui";
+import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const { register, watch, errors, isValid, RegisterFormNames, handleSubmit } =
     useRegisterForm();
 
-  const onSubmit = (data: RegisterFormValues) => {
-    console.log(data);
+  const dispatch = useAppDispatch()
+
+  const authError = useSelector(getAuthError)
+
+  const authLoading = useSelector(getAuthLoading)
+
+  const navigate = useNavigate()
+
+  const onSubmit = async (data: RegisterFormValues) => {
+    const res = await dispatch(registerByEmail(data))
+    if (res.meta.requestStatus === "fulfilled") {
+      navigate("/login")
+    }
   }
 
   return (
@@ -25,6 +40,7 @@ export const RegisterForm = () => {
           <Text className={cls.title} fw={600} size={24} color="red">
             Регистрация
           </Text>
+          {authError && <Text fw={500} size={14} color="error">{authError}</Text>}
           <Form onSubmit={handleSubmit(onSubmit)} className={cls.form}>
             <VStack align="center" gap={18}>
               <Input
@@ -80,7 +96,7 @@ export const RegisterForm = () => {
                   </Text>
                 </HStack>
               </HStack>
-              <Button type="submit" disabled={!isValid} className={cls.btn} max={true}>
+              <Button type="submit" disabled={!isValid && authLoading} className={cls.btn} max={true} loading={authLoading}>
                 Регистрация
               </Button>
 

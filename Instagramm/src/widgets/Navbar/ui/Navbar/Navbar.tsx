@@ -5,23 +5,26 @@ import { useContext } from "react";
 import { ThemeContext } from "@/app/provider";
 import { Theme } from "@/shared/consts/theme";
 import { AppLink, Button, HStack } from "@/shared/ui";
+import { classNames } from "@/shared/lib/classNames";
+import { useSelector } from "react-redux";
+import { getAuthData } from "@/entities/User";
 
 export const Navbar = () => {
   const { theme } = useContext(ThemeContext);
-  const auth = false
+  const isLogged = !!useSelector(getAuthData)
 
   return (
     <div className={cls.navbar}>
       <div className="container">
         <div className={cls.wrap}>
           <img
-            className={theme === Theme.DARK && cls.dark}
+            className={classNames("", { [cls.dark]: theme === Theme.DARK }, [])}
             src={Logo}
             alt="Instagramm"
           />
 
           <NavSearch />
-          {auth
+          {isLogged
             ? (
             <NavMenu />
               )

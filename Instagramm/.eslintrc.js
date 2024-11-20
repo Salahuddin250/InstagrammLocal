@@ -36,6 +36,7 @@ module.exports = {
     "promise/param-names": "off",
     "react/jsx-indent": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
     "react/display-name": "off"
   },
 };

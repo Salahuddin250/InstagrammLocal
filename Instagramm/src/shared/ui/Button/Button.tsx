@@ -1,6 +1,7 @@
 import { type ButtonHTMLAttributes, type FC, type ReactNode } from "react";
 import cls from "./Button.module.scss";
 import { type Mods, classNames } from "@/shared/lib/classNames";
+import { Spinner } from "../Spinner/Spinner";
 
 type ButtonVariant = "default" | "outline";
 type PaddingType = 5 | 10 | 15 | 20;
@@ -48,7 +49,7 @@ export const Button: FC<ButtonProps> = (props) => {
   return (
      <button className={classNames(cls.btn, mods, classes)} {...rest}>
         {addonLeft}
-        {loading ? <div>Spinner...</div> : children}
+        {loading ? <Spinner size="s" className={cls.loading} ></Spinner> : children}
         {addonRight}
      </button>
   );

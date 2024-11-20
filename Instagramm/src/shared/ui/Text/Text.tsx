@@ -6,7 +6,7 @@ export type AsType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 export type TextSize = 10 | 12 | 13 | 14 | 16 | 18 | 24;
 export type TextFw = 300 | 400 | 500 | 600 | 700 | 800;
 export type TextAlign = "center" | "left" | "right";
-export type TextColor = "default" | "gray" | "red";
+export type TextColor = "default" | "gray" | "red" | "error";
 
 const textClasses: Record<TextSize, string> = {
   10: cls.size10,
@@ -33,7 +33,8 @@ const alignClasses: Record<TextAlign, string> = {
 const colorClasses: Record<TextColor, string> = {
   default: cls.default,
   gray: cls.gray,
-  red: cls.red
+  red: cls.red,
+  error: cls.error
 };
 
 interface TextProps {

@@ -4,6 +4,15 @@
   justify-content: center;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
+  height: 48px;
+
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &.disabled {
     pointer-events: none;
