@@ -38,6 +38,7 @@ module.exports = {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-invalid-void-type": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "react/display-name": "off"
   },
 };

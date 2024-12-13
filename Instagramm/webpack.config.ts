@@ -23,6 +23,7 @@ export default (env: BuildEnv) => {
     output: {
       filename: "[name][contenthash].js",
       path: path.resolve(__dirname, "built"),
+      publicPath: "/",
       clean: true
     },
     plugins: [

@@ -1,0 +1,18 @@
+.profileCont {
+  margin-top: 40px;
+  gap: 70px;
+  .profileInfo {
+    .profileBottom {
+      max-width: 434px;
+      width: 100%;
+    }
+  }
+}
+.follow {
+    h2 {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+}

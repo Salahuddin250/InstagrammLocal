@@ -8,22 +8,52 @@
   display: flex;
   align-items: center;
   background: var(--main-color-body);
-}
+  .text {
+    position: absolute;
+    left: 15px;
+    pointer-events: none;
+  }
 
-.text {
-  position: absolute;
-  left: 15px;
-  pointer-events: none;
-}
-
-.input {
-  height: 100%;
-  width: 100%;
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--inverted-main-color);
-  padding: 0 5px;
-  border-radius: 10px;
-  outline: 1px solid var(--border);
-  background: transparent;
+  .input {
+    height: 100%;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--inverted-main-color);
+    padding: 0 10px;
+    border-radius: 10px;
+    outline: 1px solid var(--border);
+    background: transparent;
+  }
+  .list {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    background: var(--main-color-body);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 10px;
+    > a {
+      padding: 4px;
+      border-radius: 10px;
+      &:hover {
+        background: var(--border);
+      }
+    }
+  }
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--border);
+  }
 }

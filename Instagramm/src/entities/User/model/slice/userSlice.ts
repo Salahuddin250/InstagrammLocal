@@ -1,9 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { type UserState } from "../types/user";
+import { getFetchAuthUser } from "../service/getFetchAuthUser";
 
 const initialState: UserState = {
   user: null,
-  token: ""
+  token: "",
+  loading: false
 };
 
 const userSlice = createSlice({
@@ -13,7 +15,22 @@ const userSlice = createSlice({
     setAuthData: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token
+    },
+    setUpdateUser: (state, action) => {
+      state.user = action.payload
     }
+  },
+  extraReducers (builder) {
+    builder
+      .addCase(getFetchAuthUser.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(getFetchAuthUser.fulfilled, (state) => {
+        state.loading = false
+      })
+      .addCase(getFetchAuthUser.rejected, (state) => {
+        state.loading = false
+      })
   }
 });
 

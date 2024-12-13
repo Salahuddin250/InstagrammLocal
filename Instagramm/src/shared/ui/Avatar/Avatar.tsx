@@ -2,7 +2,7 @@ import { type FC } from "react";
 import cls from "./Avatar.module.scss";
 import { classNames } from "@/shared/lib/classNames";
 
-type AvatarSize = 25 | 34 | 39 | 45 | 50 | 142 | 180;
+export type AvatarSize = 25 | 34 | 39 | 45 | 50 | 142 | 180;
 type AvatarVariant = "default" | "stories";
 
 const sizeClasses: Record<AvatarSize, string> = {

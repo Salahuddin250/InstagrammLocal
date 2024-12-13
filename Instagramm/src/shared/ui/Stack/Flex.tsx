@@ -17,10 +17,11 @@ export interface FlexProps {
   max?: boolean
   className?: string
   wrap?: WrapType
+  onClick?: () => void
 }
 
 export const Flex: FC<FlexProps> = (props) => {
-  const { children, direction, justify = "start", align = "center", gap = 0, max = true, wrap = "nowrap", className } = props;
+  const { children, direction, justify = "start", align = "center", gap = 0, max = true, wrap = "nowrap", className, onClick } = props;
 
   const directionClasses: Record<DirectionType, string> = {
     column: cls.column,
@@ -61,5 +62,5 @@ export const Flex: FC<FlexProps> = (props) => {
     [cls.max]: max
   }
 
-  return <div className={classNames(cls.flex, mods, classes)}>{children}</div>;
+  return <div onClick={onClick} className={classNames(cls.flex, mods, classes)}>{children}</div>;
 };

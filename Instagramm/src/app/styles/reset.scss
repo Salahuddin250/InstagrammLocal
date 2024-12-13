@@ -1,0 +1,32 @@
+.ant-modal {
+  &-content {
+    background: var(--main-color-body) !important;
+  }
+  &-header {
+    color: var(--main-color);
+    background: var(--main-color-body) !important;
+  }
+}
+.ant-modal-close-icon {
+  color: var(--inverted-main-color) !important;
+}
+.ant-dropdown-menu {
+  background: var(--main-color-body) !important;
+}
+.ant-btn {
+  &-primary {
+    &:disabled {
+
+        background: var(--border) !important;
+        opacity: .6;
+    }
+  }
+  &-dangerous {
+    &:disabled {
+      
+        background: var(--border) !important;
+        opacity: .6;
+      
+    }
+  }
+}

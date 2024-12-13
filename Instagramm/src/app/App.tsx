@@ -1,4 +1,4 @@
-import { Navbar } from "../widgets";
+import { Navbar, PageLoader } from "../widgets";
 import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getAuthToken, getFetchAuthUser } from "@/entities/User";
@@ -22,6 +22,7 @@ export const App = () => {
     <div className="app">
       <Suspense fallback="">
         <Navbar auth={Boolean(isLogged)} />
+        <PageLoader/>
         <div className="container">
           <RouteProvider/>
         </div>
