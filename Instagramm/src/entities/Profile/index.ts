@@ -2,10 +2,12 @@
 export { ProfileInfo } from "./ui/ProfileInfo/ProfileInfo"
 export { ProfilePost } from "./ui/ProfilePosts/ProfilePosts"
 export { EditProfile } from "./ui/EditProfile/EditProfile"
+export { FollowModal } from "./ui/FollowModal/FollowModal"
 
 // types
 export type { ProfileState } from "./model/types/profile"
 export { FollowEnum } from "./model/types/profile"
+export type { FollowModalTypes } from "./model/types/profile"
 
 // slice
 export { profileActions, profileReduser } from "./model/slice/profileSlice"
@@ -25,3 +27,6 @@ export { getUserProfile } from "./model/service/getUserProfile"
 export { updateProfile } from "./model/service/updateProfile"
 export { followUser } from "./model/service/follow"
 export { unfollowUser } from "./model/service/unfollow"
+
+// hooks
+export { useProfileModal } from "./model/hooks/useProfileModal";

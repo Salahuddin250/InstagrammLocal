@@ -6,11 +6,12 @@ import { classNames } from "@/shared/lib/classNames";
 interface IconProps {
   type: IconType
   className?: string
+  onClick?: (value: any) => void
 }
 
-export const Icon: FC<IconProps> = ({ type, className }) => {
+export const Icon: FC<IconProps> = ({ type, className, onClick }) => {
   const classes = [className];
   return (
-     <div className={classNames(cls.icon, {}, classes)}>{iconName[type]}</div>
+     <div onClick={onClick} className={classNames(cls.icon, {}, classes)}>{iconName[type]}</div>
   );
 };

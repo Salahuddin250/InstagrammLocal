@@ -1,7 +1,7 @@
 import { AppLink, Avatar, DropDown, Icon, Text } from "@/shared/ui";
 import cls from "./NavMenu.module.scss";
 import { type INavMenuItem } from "../../model/consts/navMenu";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { ThemeContext } from "@/app/provider";
 import { Theme } from "@/shared/consts/theme";
 import { SwitchButton } from "@/features";
@@ -12,12 +12,17 @@ import { type MenuProps } from "antd";
 import { useSelector } from "react-redux";
 import { getAuthData, logout } from "@/entities/User";
 import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
+import { AddPostModal, addPostModalActions, getAddPostModalOpen } from "@/features/AddPostModal";
 
 export const NavMenu = () => {
   const dispatch = useAppDispatch()
   const { theme } = useContext(ThemeContext);
-
   const authData = useSelector(getAuthData)
+  const isOpenAddPostModal = useSelector(getAddPostModalOpen)
+
+  const onCloseAddPostModal = useCallback(() => {
+    dispatch(addPostModalActions.setIsAddPostModal(false))
+  }, [isOpenAddPostModal])
 
   const navMenuItems: INavMenuItem[] = [
     {
@@ -25,15 +30,16 @@ export const NavMenu = () => {
       iconType: "Home"
     },
     {
-      href: "/login",
+      href: "/",
       iconType: "Comments"
     },
     {
-      href: "/register",
+      href: "/",
       iconType: "Shape"
     },
     {
-      iconType: "Add"
+      iconType: "Add",
+      onClick: () => dispatch(addPostModalActions.setIsAddPostModal(true))
     },
     {
       href: "/",
@@ -85,11 +91,14 @@ export const NavMenu = () => {
                 </Link>
                   )
                 : (
-                <Icon type={item.iconType} />
+                <Icon type={item.iconType} onClick={item.onClick} />
                   )}
             </li>
           );
         })}
+
+        <AddPostModal isOpen={isOpenAddPostModal} onClose={onCloseAddPostModal}/>
+
         <li
           className={classNames(
             cls.item,

@@ -10,53 +10,33 @@ import {
   getProfileUser,
   profileActions,
   EditProfile,
-  FollowEnum
+  FollowEnum,
+  useProfileModal,
+  FollowModal
 } from "@/entities/Profile";
 import { Modal, Spin } from "antd";
 import { FollowBtn } from "@/features";
-import { FollowModal } from "../FollowModal/FollowModal";
 
 interface ProfileInfoProps {
   id: string
   users: User[]
 }
-interface FollowModalTypes {
-  isOpen: boolean
-  view?: FollowEnum
-}
 
 export const ProfileInfo: FC<ProfileInfoProps> = ({ id, users }) => {
   const dispatch = useAppDispatch();
-
   const authData = useSelector(getAuthData);
   const userLoading = useSelector(getProfileUserLoading);
   const user = useSelector(getProfileUser);
 
-  const [isOpen, setIsOpen] = useState<boolean>();
-  const [isFollowModal, setIsFollowModal] = useState<FollowModalTypes>({
-    isOpen: false,
-    view: FollowEnum.FOLLOWERS
-  });
-
-  const onOpen = () => {
-    setIsOpen(true);
-    dispatch(profileActions.setClearMessage());
-  };
-  const onClose = () => {
-    setIsOpen(false);
-  };
-  const onOpenFollowModal = useCallback(() => {
-    setIsFollowModal({
-      isOpen: true,
-      view:
-        isFollowModal.view === FollowEnum.FOLLOWERS
-          ? FollowEnum.FOLLOWING
-          : FollowEnum.FOLLOWERS
-    });
-  }, [isFollowModal]);
-  const onCloseFollowModal = useCallback(() => {
-    setIsFollowModal({ isOpen: false, view: isFollowModal.view });
-  }, [isFollowModal]);
+  const {
+    isOpen,
+    isFollowModal,
+    onOpen,
+    onClose,
+    onCloseFollowModal,
+    onOpenFollowingModal,
+    onOpenFollowersModal
+  } = useProfileModal();
 
   useEffect(() => {
     if (authData?._id === id) {
@@ -91,7 +71,7 @@ export const ProfileInfo: FC<ProfileInfoProps> = ({ id, users }) => {
                   Posts
                 </Text>
               </VStack>
-              <VStack className={cls.follow} onClick={onOpenFollowModal}>
+              <VStack className={cls.follow} onClick={onOpenFollowersModal}>
                 <Text fw={600} size={24}>
                   {user.followers.length}
                 </Text>
@@ -99,7 +79,7 @@ export const ProfileInfo: FC<ProfileInfoProps> = ({ id, users }) => {
                   Followers
                 </Text>
               </VStack>
-              <VStack className={cls.follow} onClick={onOpenFollowModal}>
+              <VStack className={cls.follow} onClick={onOpenFollowingModal}>
                 <Text fw={600} size={24}>
                   {user.following.length}
                 </Text>
@@ -134,9 +114,13 @@ export const ProfileInfo: FC<ProfileInfoProps> = ({ id, users }) => {
                 }
                 onCancel={onCloseFollowModal}
               >
-                <FollowModal data={isFollowModal.view === FollowEnum.FOLLOWERS
-                  ? user.followers
-                  : user.following}/>
+                <FollowModal
+                  data={
+                    isFollowModal.view === FollowEnum.FOLLOWERS
+                      ? user.followers
+                      : user.following
+                  }
+                />
               </Modal>
               <Modal
                 footer={false}

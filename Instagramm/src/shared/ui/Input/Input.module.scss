@@ -28,14 +28,21 @@
 
   .label {
     position: relative;
-    input {
+    input, textarea {
       font-weight: 400;
       font-size: 16px;
       line-height: 150%;
       color: var(--inverted-main-color);
+      background: var(--main-color-body);
       width: 100%;
       padding: 10px;
       border: 1px solid var(--border);
+      height: inherit;
+      resize: none;
+      outline: none;
+    }
+    textarea {
+      padding: 15px 10px;
     }
     .placeholder {
       position: absolute;

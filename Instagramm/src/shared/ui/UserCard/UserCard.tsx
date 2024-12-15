@@ -37,8 +37,8 @@ export const UserCard: FC<UserCardProps> = memo(({
       <HStack gap={16} className={classNames(cls.userCard, {}, [className])}>
         <Avatar size={size} src={src && src} />
         <VStack align="start">
-          <Text color="default" as="span"fw={700} size={14}>{title}</Text>
-          <Text color="red"fw={500}>{content}</Text>
+          <Text color="default" as="span"fw={500} size={14}>{title}</Text>
+          {content && <Text as="span" color="red"fw={400} size={12}>{content}</Text>}
         </VStack>
       </HStack>
     </AppLink>

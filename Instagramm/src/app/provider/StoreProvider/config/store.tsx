@@ -4,12 +4,14 @@ import { authReduser } from '@/features/auth'
 import { userReducer } from '@/entities/User'
 import { $api } from '@/shared/api'
 import { profileReduser } from '@/entities/Profile'
+import { addPostModalReduser } from '@/features/AddPostModal'
 
 export const createStore = () => {
   const rootRedusers: ReducersMapObject<StateSchema> = {
     auth: authReduser,
     user: userReducer,
-    profile: profileReduser
+    profile: profileReduser,
+    addPostModal: addPostModalReduser
   }
 
   const extraArg: ThunkExtraArg = {

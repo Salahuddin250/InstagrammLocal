@@ -1,0 +1,24 @@
+.home {
+    gap: 48px;
+    margin-top: 25px;
+}
+.left {
+    flex: 1;
+}
+.right {
+    width: 366px;
+    .usercard {
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+    .followers {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    }
+    .recomend_usercard {
+        padding: 5px 0;
+    }
+
+}

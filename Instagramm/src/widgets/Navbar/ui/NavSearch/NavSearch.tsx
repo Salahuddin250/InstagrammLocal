@@ -65,7 +65,7 @@ export const NavSearch = () => {
         </span>
           )}
       {search && (
-        <VStack justify="center" className={cls.list}>
+        <VStack gap={8} justify="center" className={cls.list}>
           {users.length > 0 && !searchLoading
             ? (
                 search &&

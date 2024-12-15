@@ -7,8 +7,11 @@ import User from "@/shared/assets/svg//User.svg"
 import Moon from "@/shared/assets/svg//Moon.svg"
 import Sun from "@/shared/assets/svg//Sun.svg"
 import Logo2 from "@/shared/assets/Logo2.png"
+import Favorite2 from "@/shared/assets/svg/grommet-icons_favorite.svg"
+import Message from "@/shared/assets/svg/bx_message-rounded.svg"
+import Bookmark from "@/shared/assets/svg/bi_bookmark.svg"
 
-export type IconType = "Home" | "Comments" | "Shape" | "Add" | "Favorite" | "User" | "Sun" | "Moon" | "Logo2"
+export type IconType = "Home" | "Comments" | "Shape" | "Add" | "Favorite" | "User" | "Sun" | "Moon" | "Logo2" | "Bookmark" | "Message" | "Favorite2"
 
 export const iconName: Record<IconType, JSX.Element> = {
   Home: <Home/>,
@@ -19,5 +22,8 @@ export const iconName: Record<IconType, JSX.Element> = {
   User: <User/>,
   Sun: <Sun/>,
   Moon: <Moon/>,
-  Logo2: <Logo2/>
+  Logo2: <Logo2/>,
+  Favorite2: <Favorite2/>,
+  Message: <Message/>,
+  Bookmark: <Bookmark/>
 }
