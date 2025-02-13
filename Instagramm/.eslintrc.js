@@ -39,6 +39,8 @@ module.exports = {
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-invalid-void-type": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "react/jsx-key": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "react/display-name": "off"
   },
 };

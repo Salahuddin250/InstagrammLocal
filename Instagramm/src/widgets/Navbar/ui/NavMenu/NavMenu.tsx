@@ -80,7 +80,7 @@ export const NavMenu = () => {
               key={index}
               className={classNames(
                 cls.item,
-                { [cls.dark]: theme === Theme.DARK },
+                { },
                 []
               )}
             >
@@ -102,8 +102,9 @@ export const NavMenu = () => {
         <li
           className={classNames(
             cls.item,
-            { [cls.dark]: theme === Theme.LIGHT },
-            []
+            {
+            },
+            [cls.dark]
           )}
         >
           <SwitchButton />

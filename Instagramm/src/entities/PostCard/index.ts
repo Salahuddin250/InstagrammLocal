@@ -1,0 +1,14 @@
+export { PostActions, PostReduser } from "./model/slice/postSlice"
+
+export type { PostState, Post } from "./model/types/post"
+
+export { createPost } from "./model/service/createPost"
+export { likePost } from "./model/service/likePost"
+export { unLikePost } from "./model/service/unLikePost"
+
+export { getDataPosts } from "./model/selectors/getDataPosts"
+export { getPostsLoading } from "./model/selectors/getPostsLoading"
+export { getPostsInited } from "./model/selectors/getPostsInited"
+
+export { PostCard } from "./ui/PostCard/PostCard"
+export { PostCardSkeleton } from "./ui/PostCardSkeleton/PostCardSkeleton"

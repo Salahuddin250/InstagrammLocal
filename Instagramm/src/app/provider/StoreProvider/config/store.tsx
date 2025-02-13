@@ -5,12 +5,14 @@ import { userReducer } from '@/entities/User'
 import { $api } from '@/shared/api'
 import { profileReduser } from '@/entities/Profile'
 import { addPostModalReduser } from '@/features/AddPostModal'
+import { PostReduser } from '@/entities/PostCard'
 
 export const createStore = () => {
   const rootRedusers: ReducersMapObject<StateSchema> = {
     auth: authReduser,
     user: userReducer,
     profile: profileReduser,
+    post: PostReduser,
     addPostModal: addPostModalReduser
   }
 

@@ -1,4 +1,4 @@
-import { forwardRef, type FC, type InputHTMLAttributes } from "react";
+import { forwardRef, memo, type FC, type InputHTMLAttributes } from "react";
 import cls from "./Input.module.scss";
 import { type Mods, classNames } from "@/shared/lib/classNames";
 import { spawn } from "child_process";
@@ -10,12 +10,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextArea
   value?: string
 }
 
-export const Input: FC<InputProps> = forwardRef((props, ref: any) => {
+export const Input: FC<InputProps> = memo(forwardRef((props, ref: any) => {
   const { className = "", error, value = "", placeholder, textarea, ...rest } = props;
 
   const mods: Mods = {
     [cls.active]: Boolean(value),
-    [cls.errorField]: Boolean(error)
+    [cls.errorField]: Boolean(error),
+    [cls.textAreaActive]: Boolean(textarea)
   };
 
   return (
@@ -52,4 +53,4 @@ export const Input: FC<InputProps> = forwardRef((props, ref: any) => {
       </span>
     </div>
   );
-});
+}));

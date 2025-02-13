@@ -19,8 +19,6 @@ export const imageUpload = async (images: any): Promise<ImageUpload[]> => {
 
     const data = await res.json()
 
-    console.log(data);
-
     newImages.push({
       public_id: data.public_id,
       url: data.secure_url

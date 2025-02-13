@@ -54,15 +54,15 @@ export const Text: FC<TextProps> = memo((props) => {
   const classes = [size && textClasses[size], fw && fWClasses[fw], align && alignClasses[align], color && colorClasses[color], className];
 
   const getAs = {
-    h1: <h1 onClick={onClick} className={classNames("", {}, classes)}>{children}</h1>,
-    h2: <h2 onClick={onClick} className={classNames("", {}, classes)}>{children}</h2>,
-    h3: <h3 onClick={onClick} className={classNames("", {}, classes)}>{children}</h3>,
-    h4: <h4 onClick={onClick} className={classNames("", {}, classes)}>{children}</h4>,
-    h5: <h5 onClick={onClick} className={classNames("", {}, classes)}>{children}</h5>,
-    h6: <h6 onClick={onClick} className={classNames("", {}, classes)}>{children}</h6>,
+    h1: <h1 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h1>,
+    h2: <h2 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h2>,
+    h3: <h3 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h3>,
+    h4: <h4 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h4>,
+    h5: <h5 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h5>,
+    h6: <h6 onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</h6>,
 
-    span: <span onClick={onClick} className={classNames("", {}, classes)}>{children}</span>,
-    p: <p onClick={onClick} className={classNames("", {}, classes)}>{children}</p>
+    span: <span onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</span>,
+    p: <p onClick={onClick} className={classNames(cls.text, {}, classes)}>{children}</p>
   };
 
   return getAs[as];

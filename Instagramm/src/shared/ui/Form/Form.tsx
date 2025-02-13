@@ -1,4 +1,4 @@
-import { type FormHTMLAttributes, type FC, type ReactNode } from "react"
+import { type FormHTMLAttributes, type FC, type ReactNode, memo } from "react"
 import cls from "./Form.module.scss"
 import { classNames } from "@/shared/lib/classNames"
 
@@ -7,7 +7,7 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   className?: string
 }
 
-export const Form: FC<FormProps> = (props) => {
+export const Form: FC<FormProps> = memo((props) => {
   const { children, className = "", ...rest } = props
   return (
     <form className={classNames(cls.form, {}, [className])} {...rest}>
@@ -16,4 +16,4 @@ export const Form: FC<FormProps> = (props) => {
         }
     </form>
   )
-}
+})

@@ -1,0 +1,14 @@
+.home {
+  gap: 48px;
+  margin-top: 25px;
+}
+.left {
+  flex: 1;
+}
+.right {
+  position: sticky;
+  top: 10px;
+  width: 366px;
+  max-width: 366px;
+}
+

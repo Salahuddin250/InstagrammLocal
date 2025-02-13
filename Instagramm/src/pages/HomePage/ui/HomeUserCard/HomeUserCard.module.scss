@@ -1,0 +1,9 @@
+.usercard {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  .followers {
+    width: 100%;
+    cursor: pointer;
+  }
+}
